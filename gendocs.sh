@@ -1,4 +1,4 @@
-# cd .\\OpnQryF-DotNET\\OpnQryF-DotNET
+cd .\\Strings-DotNET\\Strings-DotNET
 # python ..\\..\\..\\replace-tabs.py formMain.vr
 # pycco formMain.vr.annotated -d ..\\..\\docs\\dotnet -l javascript 
 
