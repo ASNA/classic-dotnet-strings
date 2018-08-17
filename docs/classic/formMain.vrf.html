@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>formMain.vrf.annotated</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>formMain.vrf.annotated</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p><a href="https://github.com/ASNA/classic-dotnet-strings">Return to repo</a></p>
+<h3>AVR Classic program to demonstrate string handling. v1.0</h3>
+<hr />
+<h2><img alt="" src="screen-shot-01.png?2" /></h2>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>Declare an instance of the MiscCtlsLib's String class.
+Note AVR Classic <em>does not</em> need (nor does it support)
+the New() keyword like .NET does. </p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="nx">DclFld</span> <span class="nx">as</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">MiscCtlsLib</span><span class="p">.</span><span class="nb">String</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>Get the length of a string.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="nx">BEGSR</span> <span class="nx">buttonLength</span> <span class="nx">Click</span>
+    <span class="nx">DclFld</span> <span class="nx">Length</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Integer</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  
+    <span class="nx">Length</span> <span class="o">=</span> <span class="nx">as</span><span class="p">.</span><span class="nx">Length</span><span class="p">(</span><span class="nx">textboxValue1</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>MsgBox Msg('Length is ' + %Trim(%Char(%EditC(Length, 'C'))))</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="nx">MsgBox</span> <span class="nx">ConvertTextAndNumberToString</span><span class="p">(</span><span class="s1">&#39;Length is &#39;</span><span class="p">,</span> <span class="nx">Length</span><span class="p">)</span> 
+<span class="nx">ENDSR</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Convert the case of a string.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="nx">BEGSR</span> <span class="nx">buttonConvertCase</span> <span class="nx">Click</span> 
+    <span class="nx">If</span> <span class="nx">optionUpperLower</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">Value</span> 
+        <span class="nx">MsgBox</span> <span class="nx">as</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">(</span><span class="nx">textboxValue1</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
+    <span class="nx">Else</span>
+        <span class="nx">MsgBox</span> <span class="nx">as</span><span class="p">.</span><span class="nx">ToUpper</span><span class="p">(</span><span class="nx">textboxValue1</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
+    <span class="nx">EndIf</span> 
+<span class="nx">ENDSR</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>Replace a part of a string.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="nx">BEGSR</span> <span class="nx">buttonReplace</span> <span class="nx">Click</span>
+    <span class="nx">DclFld</span> <span class="nx">NewValue</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>The value to replace is case-sensitive! </p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="nx">NewValue</span> <span class="o">=</span> <span class="nx">as</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="nx">textboxValue1</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span> <span class="nx">textboxValue2</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span> <span class="nx">textboxValue3</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
+    <span class="nx">MsgBox</span> <span class="nx">NewValue</span> 
+<span class="nx">ENDSR</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      <p>Split a string on a delimiter.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="nx">BEGSR</span> <span class="nx">buttonTokenize</span> <span class="nx">Click</span>
+    <span class="nx">DclFld</span> <span class="nx">TokenCount</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Integer</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+    <span class="nx">DclFld</span> <span class="nx">i</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Integer</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+
+    <span class="nx">If</span> <span class="o">%</span><span class="nx">Trim</span><span class="p">(</span><span class="o">%</span><span class="nx">Trim</span><span class="p">(</span><span class="nx">textboxValue2</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="nx">MsgBox</span> <span class="s1">&#39;Value 2 must contain a delimiter&#39;</span>
+        <span class="nx">LeaveSr</span> 
+    <span class="nx">EndIf</span>  
+
+    <span class="nx">TokenCount</span> <span class="o">=</span> <span class="nx">as</span><span class="p">.</span><span class="nx">Tokenize</span><span class="p">(</span><span class="nx">textboxValue1</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span> <span class="o">%</span><span class="nx">Trim</span><span class="p">(</span><span class="nx">textboxValue2</span><span class="p">.</span><span class="nx">Text</span><span class="p">))</span> 
+    <span class="nx">If</span> <span class="nx">TokenCount</span> <span class="o">&gt;</span> <span class="mi">0</span> 
+        <span class="nx">Do</span> <span class="nx">FromVal</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="nx">ToVal</span><span class="p">(</span><span class="nx">TokenCount</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="nx">Index</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      <p>The Words array property is zero-based! </p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>            <span class="nx">MsgBox</span> <span class="nx">as</span><span class="p">.</span><span class="nx">Words</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+        <span class="nx">EndDo</span> 
+    <span class="nx">EndIf</span>
+<span class="nx">ENDSR</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-9'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-9'>#</a>
+      </div>
+      <p>Find the position of one string in another. </p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="nx">BEGSR</span> <span class="nx">buttonFind</span> <span class="nx">Click</span>
+    <span class="nx">DclFld</span> <span class="nx">Position</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Integer</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+
+    <span class="nx">Position</span> <span class="o">=</span> <span class="nx">as</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="nx">textboxValue1</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span> <span class="nx">textboxValue2</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span> 
+    <span class="nx">MsgBox</span> <span class="nx">ConvertTextAndNumberToString</span><span class="p">(</span><span class="nx">textboxValue2</span><span class="p">.</span><span class="nx">Text</span> <span class="o">+</span> <span class="s1">&#39; found at position &#39;</span><span class="p">,</span> <span class="nx">Position</span><span class="p">)</span> 
+<span class="nx">ENDSR</span>
+
+<span class="nx">BegFunc</span> <span class="nx">ConvertTextAndNumberToString</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> 
+    <span class="nx">DclSrParm</span> <span class="nx">Text</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> 
+    <span class="nx">DclSrParm</span> <span class="nb">Number</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Integer</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+
+    <span class="nx">LeaveSr</span> <span class="nx">Value</span><span class="p">(</span><span class="nx">Text</span> <span class="o">+</span> <span class="o">%</span><span class="nx">Trim</span><span class="p">(</span><span class="o">%</span><span class="nx">Char</span><span class="p">(</span><span class="o">%</span><span class="nx">EditC</span><span class="p">(</span><span class="nb">Number</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">))))</span>
+<span class="nx">EndFunc</span> 
+
+<span class="nx">BEGSR</span> <span class="nx">buttonLength</span> <span class="nx">MouseMove</span>
+<span class="nx">DclSrParm</span> <span class="nx">Button</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">Shift</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">X</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">Y</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+
+    <span class="nx">labelDescription</span><span class="p">.</span><span class="nx">Caption</span> <span class="o">=</span> <span class="nx">buttonLength</span><span class="p">.</span><span class="nx">Tag</span>     
+<span class="nx">ENDSR</span>
+
+<span class="nx">BEGSR</span> <span class="nx">buttonConvertCase</span> <span class="nx">MouseMove</span>
+<span class="nx">DclSrParm</span> <span class="nx">Button</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">Shift</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">X</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">Y</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+
+    <span class="nx">labelDescription</span><span class="p">.</span><span class="nx">Caption</span> <span class="o">=</span> <span class="nx">buttonConvertCase</span><span class="p">.</span><span class="nx">Tag</span>      
+<span class="nx">ENDSR</span>
+
+<span class="nx">BEGSR</span> <span class="nx">buttonFind</span> <span class="nx">MouseMove</span>
+<span class="nx">DclSrParm</span> <span class="nx">Button</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">Shift</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">X</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">Y</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+
+    <span class="nx">labelDescription</span><span class="p">.</span><span class="nx">Caption</span> <span class="o">=</span> <span class="nx">buttonFind</span><span class="p">.</span><span class="nx">Tag</span>       
+<span class="nx">ENDSR</span>
+
+<span class="nx">BEGSR</span> <span class="nx">buttonReplace</span> <span class="nx">MouseMove</span>
+<span class="nx">DclSrParm</span> <span class="nx">Button</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">Shift</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">X</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">Y</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+ 
+    <span class="nx">labelDescription</span><span class="p">.</span><span class="nx">Caption</span> <span class="o">=</span> <span class="nx">buttonReplace</span><span class="p">.</span><span class="nx">Tag</span>      
+<span class="nx">ENDSR</span>
+
+<span class="nx">BEGSR</span> <span class="nx">buttonTokenize</span> <span class="nx">MouseMove</span>
+<span class="nx">DclSrParm</span> <span class="nx">Button</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">Shift</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">X</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+<span class="nx">DclSrParm</span> <span class="nx">Y</span> <span class="nx">TYPE</span><span class="p">(</span><span class="o">*</span><span class="nx">INTEGER</span><span class="p">)</span> <span class="nx">LEN</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+
+    <span class="nx">labelDescription</span><span class="p">.</span><span class="nx">Caption</span> <span class="o">=</span> <span class="nx">buttonTokenize</span><span class="p">.</span><span class="nx">Tag</span>       
+<span class="nx">ENDSR</span>
+
+
+<span class="nx">BEGSR</span> <span class="nx">buttonCopyToClipboard</span> <span class="nx">Click</span>
+    <span class="nx">Clip</span><span class="p">.</span><span class="nx">ClearClipboard</span><span class="p">()</span>
+    <span class="nx">Clip</span><span class="p">.</span><span class="nx">AddToClipboard</span><span class="p">(</span><span class="nx">textboxValue1</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>        
+<span class="nx">ENDSR</span>
+
+<span class="nx">BEGSR</span> <span class="nx">buttonCopyFromClipboard</span> <span class="nx">Click</span>
+    <span class="nx">Clip</span><span class="p">.</span><span class="nx">GetFromClipboard</span><span class="p">(</span><span class="nx">textboxValue2</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span> 
+<span class="nx">ENDSR</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
